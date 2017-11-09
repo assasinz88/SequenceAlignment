@@ -3,55 +3,59 @@
 
 using namespace std;
 
-vector<char> alignedS;
 
-void print(vector<char> a){
-
-    for(int i=0;i<a.size();i++){
-        cout<<a[i];
+void print2D(vector<int> v){
+    for(int i=0;i<v.size();i++){
+        cout<<v[i]<<" ";
     }
-
 }
 
-void alignS(vector<char> a, vector<char> b){
+void lcs(vector<int> a,vector<int> b,vector<int> c){
 
-    int n;
-
-    if(a.size()>b.size()){
-        n=a.size();
-    } else{
-        n=b.size();
+/*
+    if(a.size()!=b.size()){
+        cout<<"Size is not same"<<endl;
+        return;
     }
+*/
+/*
+    for(int i=0;i<a.size();i++){
 
-    for(int i=0;i<n;i++){
-        if(a[i]==b[i]){
-            alignedS.push_back(a[i]);
+        for(int j=0;j<b.size();j++){
+            if(a[i]!=b[j]){
+
+            }
         }
     }
+*/
+
+    for(int i=0;i<a.size();i++){ //looping sebanyak ukuran vektor a atau b. Disini kami mengambil vektor a
+        if(a[i]==b[i]){ //jika index vektor pertama dan kedua sama dan nilainya sama
+            c.push_back(a[i]); //masukkan ke dalam vektor c
+        }
+    }
+    print2D(c);
+
 }
 
 int main(){
 
-    string a,b;
+    int n,m,x;
 
-    int matches,mismatches,indels;
+    cin>>n>>m;
 
-    a = "TACGTGGCTA";
-    b = "TCGTGGCTA";
+    vector<int>a;vector<int>b;vector<int>c;
 
-    vector<char> sequenceA(a.begin(),a.end());
-    vector<char> sequenceB(b.begin(),b.end());
+    for(int i=0;i<n;i++){
+        cin>>x;
+        a.push_back(x);
+    }
 
-    cout<<"Sequence A: ";
-    print(sequenceA);
-    cout<<endl;
+    for(int j=0;j<m;j++){
 
-    cout<<"Sequence B: ";
-    print(sequenceB);
-    cout<<endl;
+        cin>>x;
+        b.push_back(x);
+    }
+    lcs(a,b,c);
 
-    alignS(sequenceA,sequenceB);
-    cout<<"Aligned: ";
-    print(alignedS);
-    cout<<endl;
 }
